@@ -50,10 +50,16 @@
             box-sizing: border-box;
             overflow-x: hidden; /* Mencegah scrollbar horizontal */
             min-height: 100vh; /* Pastikan background mengisi seluruh tinggi */
+            /* Menambahkan gambar latar belakang */
+            background-image: url('https://i.imgur.com/FX3SEqC.jpeg');
+            background-size: cover; /* Memastikan gambar menutupi seluruh area */
+            background-position: center; /* Memusatkan gambar */
+            background-repeat: no-repeat; /* Mencegah gambar berulang */
+            background-attachment: fixed; /* Membuat gambar latar belakang tetap saat discroll */
         }
 
         .container {
-            background-color: #ffffff; /* Latar belakang putih bersih */
+            background-color: rgba(255, 255, 255, 0.9); /* Latar belakang putih bersih dengan sedikit transparansi */
             border-radius: 16px; /* Sudut membulat yang lebih besar */
             box-shadow: 0 15px 40px var(--shadow-medium); /* Bayangan yang lebih dalam dan menonjol */
             padding: 50px; /* Padding internal yang lebih luas */
