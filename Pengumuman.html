@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengumuman Kelulusan SDN Kebon Kosong 02 Tahun Pelajaran 2024/2025</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        /* Mendefinisikan variabel CSS untuk kemudahan pengaturan warna dan ukuran */
+        :root {
+            /* Warna utama diambil dari hijau/tosca pada logo (buku) */
+            --primary-color: #0F9D58; /* Hijau yang lebih dalam */
+            --primary-dark: #0A7F41;  /* Hijau gelap */
+
+            /* Warna sekunder diambil dari merah/oranye pada logo (pena/garis perisai) */
+            --secondary-color: #DB4437; /* Merah oranye */
+
+            /* Warna aksen dari biru pada logo (garis perisai luar) */
+            --accent-blue: #4285F4; /* Biru */
+
+            /* Latar belakang sangat lembut, mendekati putih, untuk menonjolkan logo */
+            --background-start: #FDFDFD; /* Hampir putih */
+            --background-end: #F0F0F0; /* Abu-abu sangat muda */
+
+            --text-dark: #333;
+            --text-medium: #555;
+            --shadow-light: rgba(0, 0, 0, 0.08);
+            --shadow-medium: rgba(0, 0, 0, 0.15);
+
+            /* Warna untuk status sukses dan error */
+            --success-bg: #e8f5e9; /* Latar hijau muda */
+            --success-text: #2e7d32; /* Teks hijau gelap */
+            --error-bg: #ffebee; /* Latar merah muda */
+            --error-text: #c62828; /* Teks merah gelap */
+
+            /* Warna khusus untuk badge LULUS dan TIDAK LULUS */
+            --lulus-bg: #dcedc8; /* Latar hijau muda untuk LULUS */
+            --lulus-text: #33691e; /* Teks hijau gelap untuk LULUS */
+            --tidak-lulus-bg: #ffcdd2; /* Latar merah muda untuk TIDAK LULUS */
+            --tidak-lulus-text: #b71c1c; /* Teks merah gelap untuk TIDAK LULUS */
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            /* Latar belakang gradien yang elegan dan modern, harmonis dengan warna logo */
+            background: linear-gradient(135deg, var(--background-start) 0%, var(--background-end) 100%);
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            overflow-x: hidden; /* Mencegah scrollbar horizontal */
+            min-height: 100vh; /* Pastikan background mengisi seluruh tinggi */
+        }
+
+        .container {
+            background-color: #ffffff; /* Latar belakang putih bersih */
+            border-radius: 16px; /* Sudut membulat yang lebih besar */
+            box-shadow: 0 15px 40px var(--shadow-medium); /* Bayangan yang lebih dalam dan menonjol */
+            padding: 50px; /* Padding internal yang lebih luas */
+            width: 100%;
+            max-width: 550px; /* Lebar maksimum kontainer */
+            text-align: center;
+            animation: fadeInScale 1s ease-out forwards; /* Animasi masuk saat dimuat */
+            position: relative;
+            z-index: 10; /* Memastikan kontainer berada di atas efek confetti */
+            border: 1px solid rgba(255, 255, 255, 0.6); /* Border transparan elegan */
+            backdrop-filter: blur(5px); /* Efek blur di belakang kontainer untuk tampilan sophisticated */
+            margin: 50px auto; /* Memusatkan kontainer secara horizontal dan memberikan spasi atas/bawah */
+        }
+
+        /* Animasi fade-in dan scale untuk kontainer */
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: translateY(-30px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .logo-container {
+            margin-bottom: 35px; /* Spasi di bawah logo */
+        }
+
+        .logo {
+            width: 130px; /* Ukuran logo sedikit lebih besar */
+            height: 130px;
+            border-radius: 50%; /* Bentuk logo bulat */
+            object-fit: cover; /* Memastikan gambar mengisi area tanpa terdistorsi */
+            box-shadow: 0 8px 20px var(--shadow-medium);
+            /* Menggunakan warna aksen biru untuk efek pulse, harmonis dengan logo */
+            animation: pulse 2.5s infinite ease-in-out;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 3px solid var(--primary-color); /* Border dengan warna utama (hijau) */
+        }
+
+        .logo:hover {
+            transform: scale(1.08);
+            box-shadow: 0 12px 25px var(--shadow-medium);
+        }
+
+        /* Keyframes untuk animasi pulse logo dengan warna aksen biru */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(var(--accent-blue), 0.7); /* Menggunakan accent-blue */
+            }
+            70% {
+                transform: scale(1.06);
+                box-shadow: 0 0 0 25px rgba(var(--accent-blue), 0); /* Menggunakan accent-blue */
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(var(--accent-blue), 0);
+            }
+        }
+
+        h1 {
+            color: var(--text-dark);
+            margin-bottom: 30px;
+            font-weight: 700;
+            font-size: 2.2em;
+            line-height: 1.3;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--text-medium);
+            font-weight: 600;
+            font-size: 1.05em;
+        }
+
+        input[type="text"],
+        input[type="date"] {
+            width: calc(100% - 24px);
+            padding: 14px;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1.05em;
+            color: var(--text-dark);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            background-color: #fdfdfd;
+        }
+
+        input[type="text"]:focus,
+        input[type="date"]:focus {
+            border-color: var(--primary-color); /* Tetap hijau utama */
+            outline: none;
+            box-shadow: 0 0 8px rgba(var(--primary-color), 0.4);
+        }
+
+        button {
+            background-color: var(--primary-color); /* Tetap hijau utama */
+            color: white;
+            padding: 16px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.15em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        button:hover {
+            background-color: var(--primary-dark); /* Tetap hijau gelap */
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        button:active {
+            transform: translateY(0);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        #result {
+            margin-top: 35px;
+            padding: 25px;
+            border-radius: 12px;
+            font-size: 1.1em;
+            font-weight: 600;
+            text-align: center;
+            border: 1px solid;
+            display: none;
+            animation: slideInResult 0.6s ease-out forwards;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Keyframes untuk animasi slide-in hasil */
+        @keyframes slideInResult {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        #result.success {
+            background-color: var(--success-bg);
+            color: var(--success-text);
+            border-color: var(--success-text);
+        }
+
+        #result.error {
+            background-color: var(--error-bg);
+            color: var(--error-text);
+            border-color: var(--error-text);
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 700;
+            margin-top: 15px;
+            animation: bounceIn 0.7s ease-out forwards;
+            font-size: 1.2em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .status-lulus {
+            background-color: var(--lulus-bg);
+            color: var(--lulus-text);
+        }
+
+        /* Efek baru untuk teks LULUS: Pop dan Warna (berubah ke warna sekunder/merah-oranye) */
+        .status-lulus .lulus-text-effect {
+            display: inline-block; /* Penting untuk transform */
+            animation: lulusPopColor 1.2s ease-out forwards; /* Animasi pop dan warna */
+            font-weight: 800; /* Lebih tebal */
+            text-shadow: 0 0 5px rgba(51, 105, 30, 0.5); /* Sedikit bayangan untuk kedalaman */
+        }
+
+        @keyframes lulusPopColor {
+            0% {
+                transform: scale(1);
+                color: var(--lulus-text);
+            }
+            50% {
+                transform: scale(1.15); /* Membesar sedikit */
+                color: var(--secondary-color); /* Berubah ke warna merah/oranye dari logo */
+            }
+            100% {
+                transform: scale(1);
+                color: var(--lulus-text); /* Kembali ke warna asli */
+            }
+        }
+
+        .status-tidak-lulus {
+            background-color: var(--tidak-lulus-bg);
+            color: var(--tidak-lulus-text);
+        }
+
+        /* Keyframes untuk animasi bounce-in badge */
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.1); opacity: 1; }
+            70% { transform: scale(0.95); }
+            100% { transform: scale(1); }
+        }
+
+        /* Gaya untuk hitung mundur */
+        #countdown-container {
+            margin-top: 30px;
+            font-size: 1.5em;
+            font-weight: 700;
+            color: var(--primary-dark);
+            display: none; /* Tersembunyi secara default */
+        }
+
+        #countdown span {
+            display: inline-block;
+            margin: 0 10px;
+            padding: 10px 15px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            min-width: 60px;
+        }
+
+        #countdown .label {
+            display: block;
+            font-size: 0.6em;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 5px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px;
+                border-radius: 12px;
+                margin: 30px auto;
+            }
+            h1 {
+                font-size: 1.8em;
+                margin-bottom: 20px;
+            }
+            .logo {
+                width: 100px;
+                height: 100px;
+            }
+            input[type="text"],
+            input[type="date"] {
+                padding: 12px;
+                font-size: 1em;
+            }
+            button {
+                padding: 14px 25px;
+                font-size: 1.05em;
+            }
+            #result {
+                padding: 20px;
+                font-size: 1em;
+            }
+            .status-badge {
+                padding: 6px 12px;
+                font-size: 1.1em;
+            }
+            #countdown span {
+                margin: 0 5px;
+                padding: 8px 12px;
+                min-width: 45px;
+                font-size: 0.9em;
+            }
+            #countdown .label {
+                font-size: 0.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo-container">
+            <img src="https://i.imgur.com/NRds9mc.png" alt="Logo SDN Kebon Kosong 02" class="logo">
+        </div>
+        <h1>Pengumuman Kelulusan SDN Kebon Kosong 02<br>Tahun Pelajaran 2024/2025</h1>
+
+        <div id="countdown-container">
+            <p>Pengumuman kelulusan akan tersedia dalam:</p>
+            <div id="countdown">
+                <span id="days">00<span class="label">Hari</span></span>
+                <span id="hours">00<span class="label">Jam</span></span>
+                <span id="minutes">00<span class="label">Menit</span></span>
+                <span id="seconds">00<span class="label">Detik</span></span>
+            </div>
+        </div>
+
+        <div id="input-form" style="display: none;">
+            <div class="form-group">
+                <label for="nisn">NISN:</label>
+                <input type="text" id="nisn" placeholder="Masukkan NISN Kamu" required>
+            </div>
+            <div class="form-group">
+                <label for="dob">Tanggal Lahir:</label>
+                <input type="date" id="dob" required>
+            </div>
+            <button onclick="checkGraduation()">Cek Kelulusan</button>
+        </div>
+
+        <div id="result">
+        </div>
+    </div>
+
+    <script>
+        // --- DATA KELULUSAN SISWA ---
+        // PENTING: Anda perlu memperbarui data ini secara manual jika ada perubahan
+        // atau jika Anda mengupload data Excel baru, konversi ke format JSON ini,
+        // lalu paste di sini.
+        const studentsData = [
+            { nisn: '0126115869', name: 'Abdul Amin', status: 'LULUS', dob: '2012-02-13', average: 92.46 },
+            { nisn: '3125327136', name: 'Asyfa Nazahrah Rizky', status: 'LULUS', dob: '2012-04-23', average: 94.92 },
+            { nisn: '3138584778', name: 'Aulia Zahra Nisa', status: 'LULUS', dob: '2013-03-21', average: 95.61 },
+            { nisn: '3128871301', name: 'Aura Alima Zanetti', status: 'LULUS', dob: '2012-08-27', average: 92.18 },
+            { nisn: '0126990357', name: 'Azizah Azza Fatimah', status: 'LULUS', dob: '2012-11-15', average: 90.66 },
+            { nisn: '0125566337', name: 'Desta Anugrah Pratama', status: 'LULUS', dob: '2012-10-09', average: 92.16 },
+            { nisn: '3123247888', name: 'Deswina Dian Almira', status: 'LULUS', dob: '2012-12-14', average: 94.01 },
+            { nisn: '3138625956', name: 'Fairel Hafidz Atharizz', status: 'LULUS', dob: '2013-03-30', average: 93.54 },
+            { nisn: '0121694793', name: 'Fakhrul Hakimi', status: 'LULUS', dob: '2012-10-08', average: 92.21 },
+            { nisn: '3137955239', name: 'Hamda Assyabiya', status: 'LULUS', dob: '2013-05-14', average: 91.73 },
+            { nisn: '3132400167', name: 'Keanu Al Zahran', status: 'LULUS', dob: '2013-05-08', average: 91.32 },
+            { nisn: '0129390721', name: 'Kharisa Olivia Prianggono', status: 'LULUS', dob: '2012-11-18', average: 94.04 },
+            { nisn: '0131651205', name: 'Khumaira Atshilla', status: 'LULUS', dob: '2013-03-20', average: 94.41 },
+            { nisn: '3133060269', name: 'Marchello Riazdin', status: 'LULUS', dob: '2013-02-25', average: 92.07 },
+            { nisn: '3124587589', name: 'Muhammad Arzhio Wira Pratama', status: 'LULUS', dob: '2012-12-26', average: 92.53 },
+            { nisn: '0138274104', name: 'Nuri Khumairoh', status: 'LULUS', dob: '2013-03-02', average: 91.18 },
+            { nisn: '3126116919', name: 'Pratama Willy Zhafran', status: 'LULUS', dob: '2012-06-25', average: 95.14 },
+            { nisn: '3131833790', name: 'Rayhan Devtom Chaniago', status: 'LULUS', dob: '2013-04-23', average: 93.94 },
+            { nisn: '3123224307', name: 'Rheynalda Chantika Az-Zahra', status: 'LULUS', dob: '2012-10-12', average: 93.82 },
+            { nisn: '0127354944', name: 'Syalwa Septi Restiana', status: 'LULUS', dob: '2012-09-01', average: 92.26 },
+            { nisn: '0129168909', name: 'Syifa Aulia Fitria', status: 'LULUS', dob: '2012-07-11', average: 95.36 },
+            { nisn: '0132251140', name: 'Valda Salsabilla Putri Andriansyah', status: 'LULUS', dob: '2013-05-01', average: 92.74 },
+            { nisn: '3124389470', name: 'Abdul Azis Utomo', status: 'LULUS', dob: '2012-10-13', average: 92.75 },
+            { nisn: '3127646675', name: 'Adara Azkayra Janitra', status: 'LULUS', dob: '2012-06-06', average: 95.14 },
+            { nisn: '3126751234', name: 'Adeline Chandra Kurniawan', status: 'LULUS', dob: '2012-09-05', average: 95.68 },
+            { nisn: '0125812895', name: 'Afifah Fitiyah', status: 'LULUS', dob: '2012-11-13', average: 94.02 },
+            { nisn: '0124982708', name: 'Alqiano Arza Setiawan', status: 'LULUS', dob: '2012-06-19', average: 92.74 },
+            { nisn: '3122331893', name: 'Alvy Karimatil Marifah', status: 'LULUS', dob: '2012-05-26', average: 93.97 },
+            { nisn: '3125177756', name: 'Anwar Sururi', status: 'LULUS', dob: '2012-03-03', average: 91.02 },
+            { nisn: '3128120633', name: 'Desti Aulia Anggraini', status: 'LULUS', dob: '2012-12-05', average: 91.50 },
+            { nisn: '3124148934', name: 'Dinara Fitriana', status: 'LULUS', dob: '2012-09-01', average: 95.36 },
+            { nisn: '3124127490', name: 'Farel Atharis Chalief', status: 'LULUS', dob: '2012-10-09', average: 92.97 },
+            { nisn: '0125453895', name: 'Ibrahim Nurrudin', status: 'LULUS', dob: '2012-10-09', average: 91.25 },
+            { nisn: '0136130718', name: 'Kaila Siskia Aminah', status: 'LULUS', dob: '2013-05-02', average: 92.60 },
+            { nisn: '0134064978', name: 'Kayla Putri', status: 'LULUS', dob: '2013-03-29', average: 91.86 },
+            { nisn: '3123177776', name: 'Kellie Tham', status: 'LULUS', dob: '2012-11-27', average: 94.02 },
+            { nisn: '0125465334', name: 'Labibah Dhiya\'ulhaq', status: 'LULUS', dob: '2012-11-18', average: 93.18 },
+            { nisn: '0124235451', name: 'Mohammad Ibnu Damar', status: 'LULUS', dob: '2012-06-05', average: 92.10 },
+            { nisn: '0138827741', name: 'Muhammad Bakti', status: 'LULUS', dob: '2013-01-18', average: 91.63 },
+            { nisn: '3124755532', name: 'Muhammad Haikal Al Fuadi', status: 'LULUS', dob: '2012-05-19', average: 93.74 },
+            { nisn: '3131283620', name: 'Nahdah Salsabila', status: 'LULUS', dob: '2013-03-22', average: 93.84 },
+            { nisn: '3131210145', name: 'Putri Ayu Nur Khotimah', status: 'LULUS', dob: '2013-04-06', average: 92.16 },
+            { nisn: '0136949261', name: 'Savira Febiola', status: 'LULUS', dob: '2013-02-01', average: 92.24 },
+            { nisn: '0112617291', name: 'Suci Rahmawati', status: 'LULUS', dob: '2011-10-27', average: 92.11 },
+            { nisn: '3117769965', name: 'Winie Stievani', status: 'LULUS', dob: '2011-09-18', average: 93.79 },
+            { nisn: '0131227346', name: 'Zaidan Alfarizi', status: 'LULUS', dob: '2013-05-03', average: 92.28 },
+            { nisn: '3127421671', name: 'Zuko Athalla Al Aufa Iqbal', status: 'LULUS', dob: '2012-08-22', average: 93.13 },
+            { nisn: '0121618970', name: 'Alwisyah Putri', status: 'LULUS', dob: '2012-04-12', average: 92.47 },
+            { nisn: '3121976786', name: 'Alya Fahriza', status: 'LULUS', dob: '2011-10-04', average: 95.10 },
+            { nisn: '3134456640', name: 'Amanda Fathiyyah', status: 'LULUS', dob: '2013-02-06', average: 92.64 },
+            { nisn: '0121274046', name: 'Ananda Sarah Amaliah', status: 'LULUS', dob: '2012-06-27', average: 90.69 },
+            { nisn: '0124439303', name: 'Aninda Diaz Astriani', status: 'LULUS', dob: '2012-03-15', average: 92.24 },
+            { nisn: '3121021173', name: 'Elmi Raihanan', status: 'LULUS', dob: '2012-09-11', average: 92.67 },
+            { nisn: '3132333716', name: 'Firli Dwi Kurniawan', status: 'LULUS', dob: '2013-01-12', average: 92.28 },
+            { nisn: '0136797857', name: 'Gibran Ahmad Kumara', status: 'LULUS', dob: '2013-06-18', average: 92.15 },
+            { nisn: '3127273580', name: 'Kenata Giovanno', status: 'LULUS', dob: '2012-12-29', average: 91.84 },
+            { nisn: '3134616176', name: 'Keyla Devanny Rasty', status: 'LULUS', dob: '2013-04-06', average: 91.79 },
+            { nisn: '3124045979', name: 'Muhammad Ibrahim Mulya Adnan', status: 'LULUS', dob: '2012-10-03', average: 93.23 },
+            { nisn: '0123326078', name: 'Muhammad Juniar Hidayat', status: 'LULUS', dob: '2012-06-03', average: 93.35 },
+            { nisn: '0131588434', name: 'Muthi\'ah Izzatunnisa', status: 'LULUS', dob: '2013-02-14', average: 93.81 },
+            { nisn: '3136520615', name: 'Naufal Rachmat Saputra', status: 'LULUS', dob: '2013-06-21', average: 90.19 },
+            { nisn: '0134260864', name: 'Nisrina Hannania Rusdi', status: 'LULUS', dob: '2013-07-01', average: 92.79 },
+            { nisn: '0112418109', name: 'Rani Novitasari', status: 'LULUS', dob: '2011-11-07', average: 89.61 },
+            { nisn: '0137339551', name: 'Rezky Alifian Valsha Nainggolan', status: 'LULUS', dob: '2013-02-15', average: 91.01 },
+            { nisn: '0122225309', name: 'Said Purnawan', status: 'LULUS', dob: '2012-06-25', average: 90.16 },
+            { nisn: '3136853557', name: 'Siti Zahra', status: 'LULUS', dob: '2013-03-15', average: 94.03 },
+            { nisn: '0139574589', name: 'Syaiful Fattah', status: 'LULUS', dob: '2013-02-03', average: 91.40 },
+            { nisn: '3131274701', name: 'Valentina Candra Zienesa', status: 'LULUS', dob: '2013-02-14', average: 92.82 },
+            { nisn: '0137754610', name: 'Viola Anastasya Prasetiyo', status: 'LULUS', dob: '2013-02-18', average: 93.70 },
+            { nisn: '0122596846', name: 'Violetta Shakila Renandra Putri', status: 'LULUS', dob: '2012-12-18', average: 93.78 }
+        ];
+
+        /**
+         * Fungsi untuk memicu efek confetti.
+         * Menggunakan library canvas-confetti.
+         */
+        function fireConfetti() {
+            // Konfigurasi confetti dengan warna yang harmonis dengan logo
+            confetti({
+                particleCount: 150, // Jumlah partikel
+                spread: 120,        // Sebaran partikel
+                origin: { y: 0.6 }, // Titik asal confetti (tengah bawah)
+                colors: ['#0F9D58', '#DB4437', '#4285F4', '#FFD700'], // Hijau, Merah/Oranye, Biru, Emas
+                disableForReducedMotion: true // Nonaktifkan untuk pengguna dengan preferensi gerak terbatas
+            });
+
+            // Tambahkan ledakan confetti kedua dari sisi lain untuk efek lebih dramatis
+            setTimeout(() => {
+                confetti({
+                    particleCount: 100,
+                    spread: 90,
+                    origin: { x: 1, y: 0.7 }, // Dari kanan atas
+                    colors: ['#0F9D58', '#DB4437', '#4285F4', '#FFD700'],
+                    disableForReducedMotion: true
+                });
+            }, 200); // Tunda sedikit
+            setTimeout(() => {
+                confetti({
+                    particleCount: 100,
+                    spread: 90,
+                    origin: { x: 0, y: 0.7 }, // Dari kiri atas
+                    colors: ['#0F9D58', '#DB4437', '#4285F4', '#FFD700'],
+                    disableForReducedMotion: true
+                });
+            }, 400); // Tunda sedikit lagi
+        }
+
+        /**
+         * Fungsi untuk memeriksa status kelulusan siswa berdasarkan NISN dan Tanggal Lahir.
+         */
+        function checkGraduation() {
+            const nisnInput = document.getElementById('nisn').value.trim();
+            const dobInput = document.getElementById('dob').value; // Format YYYY-MM-DD
+
+            const resultDiv = document.getElementById('result');
+
+            // Validasi input tidak boleh kosong
+            if (!nisnInput || !dobInput) {
+                resultDiv.className = 'error'; // Menambahkan kelas 'error' untuk styling
+                resultDiv.innerHTML = 'Mohon lengkapi NISN dan Tanggal Lahir Kamu.';
+                resultDiv.style.display = 'block'; // Menampilkan div hasil
+                return; // Menghentikan fungsi
+            }
+
+            // Mencari data siswa yang cocok di array studentsData
+            const student = studentsData.find(s => s.nisn === nisnInput && s.dob === dobInput);
+
+            if (student) {
+                // Jika siswa ditemukan
+                let statusBadgeClass = '';
+                let statusText = '';
+                let congratulatoryMessage = ''; // Pesan selamat
+
+                // Menentukan kelas CSS dan teks status berdasarkan status kelulusan
+                if (student.status.toUpperCase() === 'LULUS') {
+                    statusBadgeClass = 'status-lulus';
+                    statusText = 'LULUS';
+                    fireConfetti(); // Panggil efek confetti jika LULUS
+                    congratulatoryMessage = `
+                        <p style="font-size: 1.3em; color: var(--primary-dark); margin-bottom: 15px;">
+                            Selamat, ${student.name}! Kamu dinyatakan LULUS!
+                        </p>
+                        <p style="font-size: 0.9em; color: var(--text-medium);">
+                            Kerja kerasmu membuahkan hasil. Teruslah berprestasi dan raih cita-cita!
+                        </p>
+                    `;
+                    // Menambahkan kelas untuk efek pada teks LULUS
+                    statusText = `<span class="lulus-text-effect">${statusText}</span>`;
+                } else {
+                    statusBadgeClass = 'status-tidak-lulus';
+                    statusText = 'TIDAK LULUS';
+                    congratulatoryMessage = `
+                        <p style="font-size: 1.3em; color: var(--error-text); margin-bottom: 15px;">
+                            Mohon maaf, ${student.name}. Kamu dinyatakan TIDAK LULUS.
+                        </p>
+                        <p style="font-size: 0.9em; color: var(--text-medium);">
+                            Jangan menyerah! Ini bukan akhir, tapi awal dari perjuangan baru. Tetap semangat!
+                        </p>
+                    `;
+                }
+
+                resultDiv.className = 'success'; // Menambahkan kelas 'success' untuk styling umum
+                resultDiv.innerHTML = `
+                    ${congratulatoryMessage}
+                    <p>NISN: <strong>${student.nisn}</strong></p>
+                    <p>Rerata Nilai: <strong>${student.average.toFixed(2)}</strong></p>
+                    <p>Status Kelulusan: <span class="status-badge ${statusBadgeClass}">${statusText}</span></p>
+                `;
+                resultDiv.style.display = 'block'; // Menampilkan div hasil
+            } else {
+                // Jika siswa tidak ditemukan
+                resultDiv.className = 'error'; // Menambahkan kelas 'error'
+                resultDiv.innerHTML = 'Data tidak ditemukan. Pastikan NISN dan Tanggal Lahir Kamu benar.';
+                resultDiv.style.display = 'block'; // Menampilkan div hasil
+            }
+        }
+
+        // --- LOGIKA HITUNG MUNDUR ---
+        const countdownDate = new Date("June 2, 2025 10:00:00 GMT+0700").getTime(); // Tanggal target: 2 Juni 2025, 10:00 WIB
+
+        const countdownContainer = document.getElementById('countdown-container');
+        const inputForm = document.getElementById('input-form');
+
+        function startCountdown() {
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerHTML = String(days).padStart(2, '0');
+            document.getElementById("hours").innerHTML = String(hours).padStart(2, '0');
+            document.getElementById("minutes").innerHTML = String(minutes).padStart(2, '0');
+            document.getElementById("seconds").innerHTML = String(seconds).padStart(2, '0');
+
+            if (distance < 0) {
+                clearInterval(x);
+                countdownContainer.style.display = 'none'; // Sembunyikan hitung mundur
+                inputForm.style.display = 'block'; // Tampilkan formulir input
+            } else {
+                countdownContainer.style.display = 'block'; // Pastikan hitung mundur terlihat
+                inputForm.style.display = 'none'; // Pastikan formulir input tersembunyi
+            }
+        }
+
+        // Perbarui hitung mundur setiap 1 detik
+        const x = setInterval(startCountdown, 1000);
+
+        // Panggil fungsi hitung mundur saat halaman dimuat pertama kali
+        window.onload = startCountdown;
+    </script>
+</body>
+</html>
