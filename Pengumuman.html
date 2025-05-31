@@ -43,55 +43,17 @@
 
         body {
             font-family: 'Poppins', sans-serif;
+            /* Latar belakang gradien yang elegan dan modern, harmonis dengan warna logo */
+            background: linear-gradient(135deg, var(--background-start) 0%, var(--background-end) 100%);
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            overflow: hidden; /* Menggunakan 'hidden' untuk mencegah scrollbar yang tidak diinginkan */
+            overflow-x: hidden; /* Mencegah scrollbar horizontal */
             min-height: 100vh; /* Pastikan background mengisi seluruh tinggi */
-            display: flex; /* Menggunakan flexbox untuk memusatkan konten */
-            justify-content: center; /* Memusatkan secara horizontal */
-            align-items: center; /* Memusatkan secara vertikal */
-            position: relative; /* Diperlukan untuk positioning background */
-            z-index: 1; /* Pastikan body berada di atas background animasi */
-        }
-
-        /* Gaya untuk background animasi sekolah */
-        .school-background {
-            position: fixed; /* Menempatkan di belakang semua konten */
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            /* URL gambar sekolah. Anda bisa menggantinya dengan gambar lain yang lebih sesuai. */
-            background-image: url('https://images.unsplash.com/photo-1546410531-bb4486657947?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');
-            background-size: 150% 150%; /* Membuat gambar lebih besar untuk efek panning yang lebih jelas */
-            background-repeat: no-repeat;
-            background-position: center; /* Memusatkan gambar awal */
-            background-color: #a0c4ff; /* Fallback background color (biru muda) */
-            filter: blur(5px) brightness(0.6); /* Efek blur dan sedikit gelap agar teks lebih jelas, ditingkatkan */
-            animation: pan-background 40s linear infinite alternate; /* Animasi panning, durasi diperpanjang */
-            z-index: -1; /* Pastikan di belakang konten utama */
-        }
-
-        /* Overlay untuk membuat teks lebih mudah dibaca di atas background */
-        .school-background::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.4); /* Overlay hitam semi-transparan, ditingkatkan */
-        }
-
-        /* Keyframes untuk animasi panning background */
-        @keyframes pan-background {
-            0% { background-position: 0% 0%; }
-            100% { background-position: 100% 100%; }
         }
 
         .container {
-            background-color: rgba(255, 255, 255, 0.9); /* Latar belakang putih semi-transparan */
+            background-color: #ffffff; /* Latar belakang putih bersih */
             border-radius: 16px; /* Sudut membulat yang lebih besar */
             box-shadow: 0 15px 40px var(--shadow-medium); /* Bayangan yang lebih dalam dan menonjol */
             padding: 50px; /* Padding internal yang lebih luas */
@@ -100,10 +62,10 @@
             text-align: center;
             animation: fadeInScale 1s ease-out forwards; /* Animasi masuk saat dimuat */
             position: relative;
-            z-index: 10; /* Memastikan kontainer berada di atas efek confetti dan background */
+            z-index: 10; /* Memastikan kontainer berada di atas efek confetti */
             border: 1px solid rgba(255, 255, 255, 0.6); /* Border transparan elegan */
             backdrop-filter: blur(5px); /* Efek blur di belakang kontainer untuk tampilan sophisticated */
-            /* Margin otomatis dihapus karena body sudah menggunakan flexbox untuk centering */
+            margin: 50px auto; /* Memusatkan kontainer secara horizontal dan memberikan spasi atas/bawah */
         }
 
         /* Animasi fade-in dan scale untuk kontainer */
@@ -373,8 +335,6 @@
     </style>
 </head>
 <body>
-    <div class="school-background"></div>
-
     <div class="container">
         <div class="logo-container">
             <img src="https://i.imgur.com/NRds9mc.png" alt="Logo SDN Kebon Kosong 02" class="logo">
