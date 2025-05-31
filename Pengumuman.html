@@ -7,6 +7,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <style>
+        /* Mengatur box-sizing secara global untuk responsivitas yang lebih baik */
+        * {
+            box-sizing: border-box;
+        }
+
         /* Mendefinisikan variabel CSS untuk kemudahan pengaturan warna dan ukuran */
         :root {
             /* Warna utama diambil dari hijau/tosca pada logo (buku) */
@@ -47,9 +52,12 @@
             background: linear-gradient(135deg, var(--background-start) 0%, var(--background-end) 100%);
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            overflow-x: hidden; /* Mencegah scrollbar horizontal */
-            min-height: 100vh; /* Pastikan background mengisi seluruh tinggi */
+            /* Menggunakan min-height 100vh untuk memastikan background mengisi seluruh tinggi viewport */
+            min-height: 100vh;
+            /* Mencegah scrollbar horizontal yang tidak diinginkan */
+            overflow-x: hidden;
+            /* Memungkinkan scrollbar vertikal jika konten melebihi tinggi viewport */
+            overflow-y: auto;
         }
 
         .container {
@@ -57,7 +65,7 @@
             border-radius: 16px; /* Sudut membulat yang lebih besar */
             box-shadow: 0 15px 40px var(--shadow-medium); /* Bayangan yang lebih dalam dan menonjol */
             padding: 50px; /* Padding internal yang lebih luas */
-            width: 100%;
+            width: 90%; /* Menggunakan persentase untuk lebar agar lebih fluid */
             max-width: 550px; /* Lebar maksimum kontainer */
             text-align: center;
             animation: fadeInScale 1s ease-out forwards; /* Animasi masuk saat dimuat */
@@ -135,7 +143,7 @@
 
         input[type="text"],
         input[type="date"] {
-            width: calc(100% - 24px);
+            width: 100%; /* Menggunakan 100% untuk lebar input */
             padding: 14px;
             border: 1px solid #e0e0e0;
             border-radius: 10px;
@@ -163,6 +171,8 @@
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            width: 100%; /* Tombol juga 100% lebar di mobile */
+            max-width: 300px; /* Batasi lebar maksimum tombol agar tidak terlalu lebar di desktop */
         }
 
         button:hover {
@@ -269,11 +279,18 @@
             font-weight: 700;
             color: var(--primary-dark);
             display: none; /* Tersembunyi secara default */
+            /* Pastikan elemen hitung mundur menggunakan flexbox untuk tata letak yang responsif */
+            display: flex;
+            flex-wrap: wrap; /* Memungkinkan item untuk pecah ke baris berikutnya */
+            justify-content: center;
+            gap: 10px; /* Jarak antar item hitung mundur */
         }
 
         #countdown span {
-            display: inline-block;
-            margin: 0 10px;
+            display: flex; /* Menggunakan flexbox untuk angka dan label */
+            flex-direction: column; /* Angka di atas label */
+            align-items: center; /* Pusatkan konten */
+            margin: 0 5px; /* Sesuaikan margin untuk tampilan yang lebih rapat */
             padding: 10px 15px;
             background-color: var(--primary-color);
             color: white;
@@ -290,46 +307,47 @@
             margin-top: 5px;
         }
 
-        /* Responsive adjustments */
+        /* Responsive adjustments (sudah ada, tetapi saya akan memastikan penyesuaian yang diperlukan) */
         @media (max-width: 600px) {
             .container {
-                padding: 30px;
+                padding: 25px; /* Sedikit lebih kecil untuk layar sangat kecil */
                 border-radius: 12px;
-                margin: 30px auto;
+                margin: 20px auto; /* Sesuaikan margin untuk mobile */
+                width: 95%; /* Lebih lebar di mobile agar tidak terlalu sempit */
             }
             h1 {
-                font-size: 1.8em;
-                margin-bottom: 20px;
+                font-size: 1.6em; /* Sedikit lebih kecil untuk judul di mobile */
+                margin-bottom: 15px;
             }
             .logo {
-                width: 100px;
-                height: 100px;
+                width: 90px;
+                height: 90px;
             }
             input[type="text"],
             input[type="date"] {
-                padding: 12px;
-                font-size: 1em;
+                padding: 10px;
+                font-size: 0.95em;
             }
             button {
-                padding: 14px 25px;
-                font-size: 1.05em;
-            }
-            #result {
-                padding: 20px;
+                padding: 12px 20px;
                 font-size: 1em;
             }
+            #result {
+                padding: 18px;
+                font-size: 0.95em;
+            }
             .status-badge {
-                padding: 6px 12px;
-                font-size: 1.1em;
+                padding: 5px 10px;
+                font-size: 1em;
             }
             #countdown span {
-                margin: 0 5px;
-                padding: 8px 12px;
-                min-width: 45px;
-                font-size: 0.9em;
+                margin: 0 3px; /* Margin antar elemen hitung mundur lebih kecil */
+                padding: 6px 10px;
+                min-width: 40px;
+                font-size: 0.8em;
             }
             #countdown .label {
-                font-size: 0.5em;
+                font-size: 0.45em;
             }
         }
     </style>
@@ -565,17 +583,17 @@
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            document.getElementById("days").innerHTML = String(days).padStart(2, '0');
-            document.getElementById("hours").innerHTML = String(hours).padStart(2, '0');
-            document.getElementById("minutes").innerHTML = String(minutes).padStart(2, '0');
-            document.getElementById("seconds").innerHTML = String(seconds).padStart(2, '0');
+            document.getElementById("days").innerHTML = String(days).padStart(2, '0') + '<span class="label">Hari</span>';
+            document.getElementById("hours").innerHTML = String(hours).padStart(2, '0') + '<span class="label">Jam</span>';
+            document.getElementById("minutes").innerHTML = String(minutes).padStart(2, '0') + '<span class="label">Menit</span>';
+            document.getElementById("seconds").innerHTML = String(seconds).padStart(2, '0') + '<span class="label">Detik</span>';
 
             if (distance < 0) {
                 clearInterval(x);
                 countdownContainer.style.display = 'none'; // Sembunyikan hitung mundur
                 inputForm.style.display = 'block'; // Tampilkan formulir input
             } else {
-                countdownContainer.style.display = 'block'; // Pastikan hitung mundur terlihat
+                countdownContainer.style.display = 'flex'; // Pastikan hitung mundur terlihat (menggunakan flex)
                 inputForm.style.display = 'none'; // Pastikan formulir input tersembunyi
             }
         }
